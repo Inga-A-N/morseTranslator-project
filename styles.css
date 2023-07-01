@@ -10,13 +10,13 @@ body {
 body h1 {
   text-align: center;
 }
-body main {
+body form {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: rgb(177, 252, 227);
 }
-body main button {
+body form button {
   padding: 1em;
   margin: 1em;
   box-shadow: 2px 2px 5px gray;
