@@ -25,6 +25,7 @@ const letters = {
   X: "-..-",
   Y: "-.--",
   Z: "--..",
+  " ": "/",
 };
 
 export function swapKeysAndValues(object) {
@@ -38,27 +39,23 @@ export function swapKeysAndValues(object) {
 export function translate(text) {
   let newStrArray = text.toUpperCase().split("");
   console.log(newStrArray);
-  try {
-    const morseText = newStrArray.reduce((acc, letter) => {
-      let key = letter;
-      let morse = letters[key];
-      if (key === " ") {
-        morse = "/";
-      }
 
-      return `${acc} ${morse}`.trim();
-    }, "");
-    console.log(morseText);
-    if (/undefined/.test(morseText)) {
-      throw new Error(
-        "Please enter letters of Latin alphabet. (Click 'Clear' to restart)"
-      );
+  const morseText = newStrArray.reduce((acc, letter) => {
+    let key = letter;
+    let morse = letters[key];
+    if (key === " ") {
+      morse = "/";
     }
-    return morseText;
-    
-  } catch (error) {
-    return error;
+
+    return `${acc} ${morse}`.trim();
+  }, "");
+  console.log(morseText);
+  if (/undefined/.test(morseText)) {
+    throw new Error(
+      "Please enter letters of Latin alphabet. (Click 'Clear' to restart)"
+    );
   }
+  return morseText;
 }
 
 export function translateMorse(morseText) {
@@ -66,25 +63,21 @@ export function translateMorse(morseText) {
     .replace(/\/ | \/|\//g, " / ")
     .trim()
     .split(" ");
-  try {
-    const englishText = newMorseArray.reduce((acc, symbol) => {
-      let english = swapKeysAndValues(letters)[symbol];
-      if (symbol === "/") {
-        english = " ";
-      }
 
-      return symbol === "" ? `${acc}` : `${acc}${english}`;
-    }, "");
-
-    if (/undefined/.test(englishText)) {
-      
-      throw new Error(
-        "Please only enter dots and dashes, one space should follow a character and forward slash should separate the words. (Click 'Clear' to restart)"
-      );
+  const englishText = newMorseArray.reduce((acc, symbol) => {
+    let english = swapKeysAndValues(letters)[symbol];
+    if (symbol === "/") {
+      english = " ";
     }
 
-    return englishText;
-  } catch (error) {
-    return error;
+    return symbol === "" ? `${acc}` : `${acc}${english}`;
+  }, "");
+
+  if (/undefined/.test(englishText)) {
+    throw new Error(
+      "Please only enter dots and dashes, one space should follow a character and forward slash should separate the words. (Click 'Clear' to restart)"
+    );
   }
+
+  return englishText;
 }

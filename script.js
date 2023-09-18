@@ -6,7 +6,7 @@
 // should handle one or more spaces between morse letters
 // should have forward slash between words
 
-import { translate, translateMorse} from "./functions.js";
+import { translate, translateMorse } from "./functions.js";
 
 const englishTextArea = document.getElementById("input");
 console.log(englishTextArea);
@@ -18,9 +18,17 @@ console.log(buttonClear);
 
 buttonTranslate.addEventListener("click", () => {
   if (englishTextArea.value.length > 0) {
-    morseTextArea.value = translate(englishTextArea.value);
+    try {
+      morseTextArea.value = translate(englishTextArea.value);
+    } catch (e) {
+      morseTextArea.placeholder = e.message;
+    }
   } else if (morseTextArea.value.length > 0) {
-    englishTextArea.value = translateMorse(morseTextArea.value);
+    try {
+      englishTextArea.value = translateMorse(morseTextArea.value);
+    } catch (e) {
+      englishTextArea.placeholder = e.message;
+    }
   }
 });
 

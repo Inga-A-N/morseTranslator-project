@@ -15,22 +15,17 @@ describe("Test cases for English to Morse translation", () => {
   });
 
   test("Should return an error if input is anything but English letters", () => {
-    try {
-      translate("6.78");
-    } catch (error) {
-      expect(error).toBeInstanceOf(Error);
-      expect(error.message).toBe(
+    expect(() => translate("6.78")).toThrowError(
+      new Error(
         "Please enter letters of Latin alphabet. (Click 'Clear' to restart)"
-      );
-    }
-    try {
-      translate("fl4t white");
-    } catch (error) {
-      expect(error).toBeInstanceOf(Error);
-      expect(error.message).toBe(
+      )
+    );
+
+    expect(() => translate("fl4t white")).toThrowError(
+      new Error(
         "Please enter letters of Latin alphabet. (Click 'Clear' to restart)"
-      );
-    }
+      )
+    );
   });
 });
 
@@ -54,20 +49,17 @@ describe("Test cases for Morse to English translation", () => {
 });
 
 test("Should return an error if input is anything but morse code for Latin alphabet", () => {
-  try {
-    translateMorse("6ABC78");
-  } catch (error) {
-    expect(error).toBeInstanceOf(Error);
-    expect(error.message).toBe(
+  expect(() => translateMorse("6ABC78")).toThrowError(
+    new Error(
       "Please only enter dots and dashes, one space should follow a character and forward slash should separate the words. (Click 'Clear' to restart)"
-    );
-  }
-  try {
-    translateMorse(". / ..?");
-  } catch (error) {
-    expect(error).toBeInstanceOf(Error);
-    expect(error.message).toBe(
-      "Please only enter dots and dashes, one space should follow a character and forward slash should separate the words. (Click 'Clear' to restart)"
-    );
-  }
+    )
+  );
+
+  expect(() =>
+    translateMorse(". / ..?").toThrowError(
+      new Error(
+        "Please only enter dots and dashes, one space should follow a character and forward slash should separate the words. (Click 'Clear' to restart)"
+      )
+    )
+  );
 });
