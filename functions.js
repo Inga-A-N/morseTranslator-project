@@ -37,47 +37,54 @@ export function swapKeysAndValues(object) {
 }
 
 export function translate(text) {
-  let newStrArray = text.toUpperCase().split("");
-  console.log(newStrArray);
+  let errors = [];
 
-  const morseText = newStrArray.reduce((acc, letter) => {
-    let key = letter;
-    let morse = letters[key];
-    if (key === " ") {
-      morse = "/";
-    }
+  let morseText = text
+    .toUpperCase()
+    .split("")
+    .map((letter) => {
+      const char = letters[letter];
 
-    return `${acc} ${morse}`.trim();
-  }, "");
-  console.log(morseText);
-  if (/undefined/.test(morseText)) {
-    throw new Error(
-      "Please enter letters of Latin alphabet. (Click 'Clear' to restart)"
-    );
+      if (char === undefined) {
+        errors.push(letter);
+      }
+      return char;
+    })
+    .join(" ");
+
+  // Making an errors array an array of unique characters
+  errors = Array.from(new Set(errors));
+
+  if (errors.length > 0) {
+    throw new Error(`Characters are not supported: ${errors.join(", ")}`);
   }
+
   return morseText;
 }
 
 export function translateMorse(morseText) {
-  let newMorseArray = morseText
+  let errors = [];
+
+  const englishText = morseText
     .replace(/\/ | \/|\//g, " / ")
     .trim()
-    .split(" ");
+    .split(" ")
+    .map((symbol) => {
+      let english = swapKeysAndValues(letters);
+      const morseChar = english[symbol];
 
-  const englishText = newMorseArray.reduce((acc, symbol) => {
-    let english = swapKeysAndValues(letters)[symbol];
-    if (symbol === "/") {
-      english = " ";
-    }
+      if (morseChar === undefined && symbol !== "") {
+        errors.push(symbol);
+      }
 
-    return symbol === "" ? `${acc}` : `${acc}${english}`;
-  }, "");
+      return symbol === "" ? "" : morseChar;
+    })
+    .join("");
 
-  if (/undefined/.test(englishText)) {
-    throw new Error(
-      "Please only enter dots and dashes, one space should follow a character and forward slash should separate the words. (Click 'Clear' to restart)"
-    );
+  errors = Array.from(new Set(errors));
+
+  if (errors.length > 0) {
+    throw new Error(`Characters are not supported: ${errors.join(", ")}`);
   }
-
   return englishText;
 }

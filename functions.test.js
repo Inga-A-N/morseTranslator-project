@@ -16,15 +16,11 @@ describe("Test cases for English to Morse translation", () => {
 
   test("Should return an error if input is anything but English letters", () => {
     expect(() => translate("6.78")).toThrowError(
-      new Error(
-        "Please enter letters of Latin alphabet. (Click 'Clear' to restart)"
-      )
+      new Error("Characters are not supported: 6, ., 7, 8")
     );
 
     expect(() => translate("fl4t white")).toThrowError(
-      new Error(
-        "Please enter letters of Latin alphabet. (Click 'Clear' to restart)"
-      )
+      new Error("Characters are not supported: 4")
     );
   });
 });
@@ -50,9 +46,7 @@ describe("Test cases for Morse to English translation", () => {
 
 test("Should return an error if input is anything but morse code for Latin alphabet", () => {
   expect(() => translateMorse("6ABC78")).toThrowError(
-    new Error(
-      "Please only enter dots and dashes, one space should follow a character and forward slash should separate the words. (Click 'Clear' to restart)"
-    )
+    new Error("Characters are not supported: 6ABC78")
   );
 
   expect(() =>
