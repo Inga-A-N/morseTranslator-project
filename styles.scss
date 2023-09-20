@@ -1,55 +1,67 @@
 body {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+
+  .background {
+    background-color: rgb(0, 0, 0, 0.2);
+    border-radius: 20px;
+  }
+
+  .container {
+    box-sizing: border-box;
+    min-width: 860px;
+    min-height: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100vh;
 
-    
-    
-    h1 {
-        text-align: center;
+    img {
+      width: 100%;
+      opacity: 0.4;
     }
 
     form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: rgb(177, 252, 227);
-        
-        button {
-            padding: 1em;
-            margin: 1em;
-            box-shadow: 2px 2px 5px gray;
-            font-weight: bold;
-            
-        }
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: absolute;
     }
 
-    .textAreas {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        width: 80vw;
-        // height: 80vh;
-        
-        
-
-        
-        div {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 5%;
-
-            label {
-                font-size: 120%;
-                font-weight: bold;
-                padding-bottom: 2%;
-            }
-        }
+    button {
+      padding: 1rem;
+      margin: 0.5rem;
+      box-shadow: 2px 2px 5px gray;
+      font-weight: bold;
+      border-radius: 10px;
     }
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5%;
+
+    label {
+      font-size: 130%;
+      font-weight: bold;
+      padding-bottom: 2%;
+    }
+  }
+
+  h1 {
+    background-image: linear-gradient(rgb(0, 0, 0, 0.2) 40%, rgb(0, 0, 0, 0.5));
+
+    width: 100%;
+    text-align: center;
+    margin-top: 0%;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+  }
 }

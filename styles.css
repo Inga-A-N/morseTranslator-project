@@ -7,37 +7,53 @@ body {
   width: 100%;
   height: 100vh;
 }
-body h1 {
-  text-align: center;
+body .background {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
 }
-body form {
+body .container {
+  box-sizing: border-box;
+  min-width: 860px;
+  min-height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(177, 252, 227);
 }
-body form button {
-  padding: 1em;
-  margin: 1em;
+body .container img {
+  width: 100%;
+  opacity: 0.4;
+}
+body .container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+}
+body .container button {
+  padding: 1rem;
+  margin: 0.5rem;
   box-shadow: 2px 2px 5px gray;
   font-weight: bold;
+  border-radius: 10px;
 }
-body .textAreas {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 80vw;
-}
-body .textAreas div {
+body div {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 5%;
 }
-body .textAreas div label {
-  font-size: 120%;
+body div label {
+  font-size: 130%;
   font-weight: bold;
   padding-bottom: 2%;
+}
+body h1 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2) 40%, rgba(0, 0, 0, 0.5));
+  width: 100%;
+  text-align: center;
+  margin-top: 0%;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
 }
 
 /*# sourceMappingURL=styles.css.map */

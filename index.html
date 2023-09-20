@@ -5,39 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles.css" />
     <script src="./script.js" defer type="module"></script>
-    
+
     <title>Morse code translator</title>
   </head>
   <body>
-    <h1>Morse code translator</h1>
+    <div class="background">
+      <h1>Morse code translator</h1>
 
-    <main>
-      <form class="textAreas">
-        <div>
-          <label for="input">English Text</label>
-          <textarea
-            name="input"
-            class="synced"
-            id="input"
-            cols="60"
-            rows="5"
-            placeholder="Please enter the text here"
-          ></textarea>
-        </div>
-        <div>
-          <label for="output">Morse Code</label>
-          <textarea
-            name="output"
-            class="synced"
-            id="output"
-            cols="60"
-            rows="5"
-            placeholder="Please enter morse code here with one space between characters and a forward slash between words"></textarea>
-        </div>
-      
-      <button type="button" id="translate">Translate</button>
-      <button type="button" id="clear">Clear</button>
-      </form>
-    </main>
+      <div class="container">
+        <img src="./assets/Morse-Code.jpeg.webp" alt="" />
+
+        <form class="textAreas">
+          <div>
+            <label for="input">English Text</label>
+            <textarea
+              name="input"
+              class="synced"
+              id="input"
+              cols="60"
+              rows="5"
+              placeholder="Please enter the text here"
+            ></textarea>
+          </div>
+          <div>
+            <label for="output">Morse Code</label>
+            <textarea
+              name="output"
+              class="synced"
+              id="output"
+              cols="60"
+              rows="5"
+              placeholder="Please enter morse code here with one space between characters and a forward slash between words"
+            ></textarea>
+          </div>
+
+          <button type="button" id="translate">Translate</button>
+          <button type="button" id="clear">Clear</button>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

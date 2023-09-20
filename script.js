@@ -16,6 +16,38 @@ console.log(buttonTranslate);
 const buttonClear = document.querySelector("#clear");
 console.log(buttonClear);
 
+const textAreas = document.querySelectorAll(".synced");
+
+textAreas.forEach((textArea) => {
+  textArea.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const newEvent = new Event("submit", { cancelable: true });
+      e.target.form.dispatchEvent(newEvent);
+    }
+  });
+});
+
+const tarnslateForm = document.querySelector(".textAreas");
+
+tarnslateForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  if (englishTextArea.value.length > 0) {
+    try {
+      morseTextArea.value = translate(englishTextArea.value);
+    } catch (e) {
+      morseTextArea.placeholder = e.message;
+    }
+  } else if (morseTextArea.value.length > 0) {
+    try {
+      englishTextArea.value = translateMorse(morseTextArea.value);
+    } catch (e) {
+      englishTextArea.placeholder = e.message;
+    }
+  }
+});
+
 buttonTranslate.addEventListener("click", () => {
   if (englishTextArea.value.length > 0) {
     try {
@@ -32,22 +64,6 @@ buttonTranslate.addEventListener("click", () => {
   }
 });
 
-//   LEAVING THIS CODE HERE TO DISCUSS AT 1-1
-//   try {
-//     if (
-//       englishTextArea.value.includes("undefined") ||
-//       morseTextArea.value.includes("undefined")
-//     ) {
-//       throw new Error("Oops, something went wrong!"); //DOES NOT THROW AN ERROR
-//     }
-//   } catch (error) {
-//     englishTextArea.value =
-//       "Please enter letters of Latin alphabet. (Click 'Clear' to restart)";
-//     morseTextArea.value =
-//       "Please only enter dots and dashes, one space should follow a character and forward slash should separate the words. (Click 'Clear' to restart)";
-//   }
-// });
-console.log(document.querySelector(".textAreas"));
 buttonClear.addEventListener("click", () => {
   document.querySelector(".textAreas").reset();
 });
